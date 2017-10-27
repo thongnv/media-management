@@ -17,20 +17,25 @@
 
 <div class="container">
     <h1>Uploads</h1>
+    <hr>
     <table id="my-table" class="table table-bordered">
         <thead>
-        <th>Some Attribute</th>
-        <th>Some Other Attribute</th>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>DATE</th>
+        <th>DOWNLOAD</th>
+        <th>DELETE</th>
         </thead>
         <tbody>
         </tbody>
     </table>
+    <hr>
 </div>
 <script type="text/javascript">
     $('#my-table').dynatable({
         dataset: {
             ajax: true,
-            ajaxUrl: '/data/sample-table-data.json',
+            ajaxUrl: 'uploads',
             ajaxOnLoad: true,
             records: []
         }

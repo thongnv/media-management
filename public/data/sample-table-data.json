@@ -1,18 +1,20 @@
 {
   "records": [
     {
-      "someAttribute": "I am record one",
-      "someOtherAttribute": "Fetched by AJAX"
+      "id": "154deef455",
+      "name": "img20171023164046051.jpg",
+      "date": "03/07/2017",
+      "download": "<i class='fa fa-download' aria-hidden='true'></i>",
+      "delete": "<i class='fa fa-trash-o'></i>"
     },
     {
-      "someAttribute": "I am record two",
-      "someOtherAttribute": "Cuz it's awesome"
-    },
-    {
-      "someAttribute": "I am record three",
-      "someOtherAttribute": "Yup, still AJAX"
+      "id": "584delo455",
+      "name": "studio-imac-1508994216711.jpg",
+      "date": "03/07/2017",
+      "download": "<i class='fa fa-download' aria-hidden='true'></i>",
+      "delete": "<i class='fa fa-trash-o'></i>"
     }
   ],
-  "queryRecordCount": 3,
-  "totalRecordCount": 3
+  "queryRecordCount": 50,
+  "totalRecordCount": 3000
 }
