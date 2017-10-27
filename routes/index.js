@@ -15,7 +15,7 @@ router.get('/uploads', function (req, res, next) {
                 "name": "img20171023164046051.jpg",
                 "date": "03/07/2017",
                 "download": "<a href='uploads/img20171023164046051.jpg' download><i class='fa fa-download' aria-hidden='true'></i></a>",
-                "delete": "<i class='fa fa-trash-o'></i>"
+                "delete": "<a id='154deef455'><i class='fa fa-trash-o'></i></a>"
             },
             {
                 "id": "584delo455",
@@ -34,6 +34,12 @@ router.get('/uploads', function (req, res, next) {
 /* GET uploaded files page. */
 router.get('/upload', function(req, res, next) {
   res.render('upload', { title: 'Express' });
+});
+
+/* GET DELETE uploaded file. */
+router.get('/delete/:id', function(req, res, next) {
+    console.log(req.params.id);
+    res.json(req.params.id);
 });
 
 module.exports = router;

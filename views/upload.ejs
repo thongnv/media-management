@@ -7,6 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all"
           rel="stylesheet" type="text/css"/>
     <link href="/css/dynatable.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
@@ -30,16 +31,26 @@
         </tbody>
     </table>
     <hr>
+    <script type="text/javascript">
+        $(function() {
+            var table = $('#my-table');
+            function updateTable() {
+                table.find('td a').click(function () {
+                    if (this.firstChild.className === "fa fa-trash-o") {
+                        alert(this.id)
+                    }
+                })
+            }
+            table.dynatable({
+                dataset: {
+                    ajax: true,
+                    ajaxUrl: 'uploads',
+                    ajaxOnLoad: true,
+                    records: []
+                }
+            }).bind('dynatable:afterUpdate', updateTable);
+        })
+    </script>
 </div>
-<script type="text/javascript">
-    $('#my-table').dynatable({
-        dataset: {
-            ajax: true,
-            ajaxUrl: 'uploads',
-            ajaxOnLoad: true,
-            records: []
-        }
-    });
-</script>
 </body>
 </html>
