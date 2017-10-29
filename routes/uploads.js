@@ -1,6 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
+/* PAGE Rendering */
+
+/* GET uploaded files page. */
+router.get('/', function(req, res, next) {
+    res.render('upload', { title: 'Express' });
+});
+
 /* APIs */
 
 /* GET uploaded files listing. */
@@ -34,13 +41,6 @@ router.get('/files', function (req, res, next) {
 router.delete('/:id', function(req, res, next) {
     console.log(req.params.id);
     res.json(req.params.id);
-});
-
-/* PAGE Rendering */
-
-/* GET uploaded files page. */
-router.get('/', function(req, res, next) {
-    res.render('upload', { title: 'Express' });
 });
 
 module.exports = router;

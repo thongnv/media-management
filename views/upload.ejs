@@ -17,7 +17,7 @@
 <body>
 
 <div class="container">
-    <h1>Uploads</h1>
+    <h1>Uploads <a href="/" title="Add media"><i class="fa fa-plus" aria-hidden="true"></i></a></h1>
     <hr>
     <table id="my-table" class="table table-bordered">
         <thead>
@@ -37,8 +37,8 @@
             function updateTable() {
                 table.find('td a').click(function () {
                     if (this.firstChild.className === "fa fa-trash-o") {
-                        alert(this.id);
-                        
+                        var dataId = $(this).data('id');
+                        deleteFile(dataId);
                     }
                 })
             }
@@ -51,13 +51,13 @@
                 }
             }).bind('dynatable:afterUpdate', updateTable);
         })
-        function deleteFile() {
+        function deleteFile(dataId) {
             var confirmation = confirm('Are You Sure?');
             if (confirmation) {
                 $.ajax({
                     type: 'DELETE',
-                    url: '/uploads/'+this.data('id')
-                }).done(function (response) {
+                    url: '/uploads/'+dataId
+                }).done(function () {
                     alert('deleted')
                 })
             }

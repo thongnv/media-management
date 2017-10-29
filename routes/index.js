@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path'),
+    fs = require('fs');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -7,8 +9,9 @@ router.get('/', function (req, res, next) {
 });
 
 /* POST submit files. */
-router.post('/uploads', function (req, res, next) {
-    res.redirect('uploads')
+router.post('/new', function (req, res, next) {
+    console.log(req.body, req.files);
+    res.json(req.files.file_data.path);
 });
 
 module.exports = router;

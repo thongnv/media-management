@@ -24,7 +24,7 @@
     <div class="page-header">
         <h1>Media Management </h1>
     </div>
-    <form action="/uploads" method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data">
         <div class="file-loading">
             <input id="kv-explorer" type="file" multiple accept="image/*, video/*">
         </div>
@@ -45,7 +45,7 @@
         });
         $("#kv-explorer").fileinput({
             'theme': 'explorer-fa',
-            'uploadUrl': '/uploads',
+            'uploadUrl': '/new',
             overwriteInitial: false,
             initialPreviewAsData: true,
             initialPreview: [],
