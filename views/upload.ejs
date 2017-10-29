@@ -37,19 +37,31 @@
             function updateTable() {
                 table.find('td a').click(function () {
                     if (this.firstChild.className === "fa fa-trash-o") {
-                        alert(this.id)
+                        alert(this.id);
+                        
                     }
                 })
             }
             table.dynatable({
                 dataset: {
                     ajax: true,
-                    ajaxUrl: 'uploads',
+                    ajaxUrl: '/uploads/files',
                     ajaxOnLoad: true,
                     records: []
                 }
             }).bind('dynatable:afterUpdate', updateTable);
         })
+        function deleteFile() {
+            var confirmation = confirm('Are You Sure?');
+            if (confirmation) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/uploads/'+this.data('id')
+                }).done(function (response) {
+                    alert('deleted')
+                })
+            }
+        }
     </script>
 </div>
 </body>

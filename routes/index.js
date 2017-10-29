@@ -6,40 +6,9 @@ router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
 });
 
-/* GET uploaded files list. */
-router.get('/uploads', function (req, res, next) {
-    var data = {
-        "records": [
-            {
-                "id": "154deef455",
-                "name": "img20171023164046051.jpg",
-                "date": "03/07/2017",
-                "download": "<a href='uploads/img20171023164046051.jpg' download><i class='fa fa-download' aria-hidden='true'></i></a>",
-                "delete": "<a id='154deef455'><i class='fa fa-trash-o'></i></a>"
-            },
-            {
-                "id": "584delo455",
-                "name": "studio-imac-1508994216711.jpg",
-                "date": "03/07/2017",
-                "download": "<i class='fa fa-download' aria-hidden='true'></i>",
-                "delete": "<i class='fa fa-trash-o'></i>"
-            }
-        ],
-        "queryRecordCount": 50,
-        "totalRecordCount": 3000
-    };
-    res.json(data);
-});
-
-/* GET uploaded files page. */
-router.get('/upload', function(req, res, next) {
-  res.render('upload', { title: 'Express' });
-});
-
-/* GET DELETE uploaded file. */
-router.get('/delete/:id', function(req, res, next) {
-    console.log(req.params.id);
-    res.json(req.params.id);
+/* POST submit files. */
+router.post('/uploads', function (req, res, next) {
+    res.redirect('uploads')
 });
 
 module.exports = router;
