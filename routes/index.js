@@ -11,7 +11,13 @@ router.get('/', function (req, res, next) {
 /* POST submit files. */
 router.post('/new', function (req, res, next) {
     console.log(req.body, req.files);
-    res.json(req.files.file_data.path);
+    var filePath = req.files.file_data.path;
+    var fileName = filePath.replace(/^.*[\\\/]/, '');
+    // TODO
+    // collect file info
+
+    // save to db
+    res.json({name: fileName});
 });
 
 module.exports = router;

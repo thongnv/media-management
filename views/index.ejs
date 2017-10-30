@@ -22,40 +22,32 @@
 <body>
 <div class="container kv-main">
     <div class="page-header">
-        <h1>Media Management </h1>
+        <h1>Upload Media</h1>
     </div>
     <form method="post" enctype="multipart/form-data">
         <div class="file-loading">
             <input id="kv-explorer" type="file" multiple accept="image/*, video/*">
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" onclick="location.href='/uploads'" class="btn btn-primary">Done</button>
         <button type="reset" class="btn btn-default">Reset</button>
     </form>
-    <hr>
 </div>
 </body>
 <script>
     $(document).ready(function () {
-        $("#test-upload").fileinput({
-            'theme': 'fa',
-            'showPreview': false,
-            'allowedFileExtensions': ['jpg', 'png', 'gif'],
-            'elErrorContainer': '#errorBlock'
-        });
         $("#kv-explorer").fileinput({
             'theme': 'explorer-fa',
             'uploadUrl': '/new',
+            maxFileCount: 10,
+            allowedFileTypes: ["image", "video"],
+            maxFileSize: 20480,
             overwriteInitial: false,
-            initialPreviewAsData: true,
-            initialPreview: [],
-            initialPreviewConfig: []
+            initialPreviewAsData: true
+        }).on('fileuploaded', function (event, file, previewId, index) {
+            // TODO: display new file name beside the original name
+            console.log('i = ' + index + ', id = ' + previewId + ', file = ' + file.response.name);
         });
-        /*
-         $("#test-upload").on('fileloaded', function(event, file, previewId, index) {
-         alert('i = ' + index + ', id = ' + previewId + ', file = ' + file.name);
-         });
-         */
     });
 </script>
 </html>

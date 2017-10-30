@@ -12,17 +12,19 @@ router.get('/', function(req, res, next) {
 
 /* GET uploaded files listing. */
 router.get('/files', function (req, res, next) {
+    // TODO
+    // get records from db
     var data = {
         "records": [
             {
-                "id": "154deef455",
+                "id": "1",
                 "name": "img20171023164046051.jpg",
-                "date": "03/07/2017",
+                "date": "03/07/2017"
             },
             {
-                "id": "584delo455",
+                "id": "2",
                 "name": "studio-imac-1508994216711.jpg",
-                "date": "03/07/2017",
+                "date": "03/07/2017"
             }
         ],
         "queryRecordCount": 50,
@@ -30,9 +32,9 @@ router.get('/files', function (req, res, next) {
     };
     var records = data.records;
     for(var i=0; i<records.length; i++) {
-        var filePath = 'uploads/' + records[i].name;
-        records[i].download = "<a href=" + filePath + " download><i class='fa fa-download' aria-hidden='true'></i></a>";
-        records[i].delete = "<a data-id=" + records[i].id + "><i class='fa fa-trash-o'></i></a>"
+        var record = records[i];
+        record.download = "<a href=" + record.name + " download><i class='fa fa-download' aria-hidden='true'></i></a>";
+        record.delete = "<a data-id=" + record.id + "><i class='fa fa-trash-o'></i></a>"
     }
     res.json(data);
 });
