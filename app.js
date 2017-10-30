@@ -6,13 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multipart = require('connect-multiparty');
 
-var index = require('./routes/index');
-var uploads = require('./routes/uploads');
+var index = require('./server/routes/index');
+var uploads = require('./server/routes/uploads');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'server/views'));
 
 app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
