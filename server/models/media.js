@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    var Media = sequelize.define('Media', {
+    let Media = sequelize.define('Media', {
         name: {
             type: DataTypes.STRING,
             allowNull: false

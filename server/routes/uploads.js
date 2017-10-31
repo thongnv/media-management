@@ -2,14 +2,14 @@ var express = require('express');
 var router = express.Router();
 const mediaController = require('../controllers').medias;
 
-/* PAGE Rendering */
+/*------------- PAGE Rendering -------------*/
 
 /* GET uploaded files page. */
 router.get('/', function(req, res, next) {
     res.render('upload', { title: 'Express' });
 });
 
-/* APIs */
+/*------------- APIs -------------*/
 
 /* GET uploaded files listing. */
 router.get('/files', mediaController.list);
