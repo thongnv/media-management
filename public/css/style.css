@@ -5,9 +5,12 @@ body {
 
 a {
   color: #00B7FF;
-  cursor: pointer;
 }
 
 .file-preview-image {
   width: 100% !important;
+}
+
+a, button, .btn {
+  cursor: pointer;
 }
