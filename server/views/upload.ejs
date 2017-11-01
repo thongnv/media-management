@@ -32,31 +32,46 @@
     </table>
     <hr>
     <script type="text/javascript">
-        $(function() {
-            var table = $('#my-table');
-            function updateTable() {
-                table.find('td a').click(function () {
-                    if (this.firstChild.className === "fa fa-trash-o") {
-                        var dataId = $(this).data('id');
-                        deleteFile(dataId);
-                    }
-                })
-            }
-            table.dynatable({
+        const records = <%- JSON.stringify(records) %>
+        const queryRecordCount = <%- JSON.stringify(queryRecordCount) %>
+        const totalRecordCount = <%- JSON.stringify(totalRecordCount) %>
+
+        const table = $('#my-table');
+        const dynatable = table
+            .bind('dynatable:init', function (e, dynatable) {
+                dynatable.sorts.add('id', 1);
+            })
+            .bind('dynatable:afterUpdate', updateTable)
+            .dynatable({
                 dataset: {
-                    ajax: true,
-                    ajaxUrl: '/uploads/files',
-                    ajaxOnLoad: true,
-                    records: []
+                    records: records,
+                    queryRecordCount: queryRecordCount,
+                    totalRecordCount: totalRecordCount,
                 }
-            }).bind('dynatable:afterUpdate', updateTable);
-        })
+            })
+            .data('dynatable');
+
+        function updateTable() {
+            table.find('td a').click(function () {
+                if (this.firstChild.className === "fa fa-trash-o") {
+                    let dataId = $(this).data('id');
+                    deleteFile(dataId);
+                }
+            })
+        }
+
+        function setToItems(argument) {
+            console.log('updating');
+            dynatable.settings.dataset.originalRecords = argument;
+            dynatable.process();
+        }
+
         function deleteFile(dataId) {
-            var confirmation = confirm('Are You Sure?');
+            let confirmation = confirm('Are You Sure?');
             if (confirmation) {
                 $.ajax({
                     type: 'DELETE',
-                    url: '/uploads/'+dataId
+                    url: '/uploads/' + dataId
                 }).done(function () {
                     alert('deleted')
                 })
