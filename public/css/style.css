@@ -7,8 +7,9 @@ a {
   color: #00B7FF;
 }
 
-.file-preview-image {
-  width: 100% !important;
+.kv-file-content .file-preview-image {
+  width: auto !important;
+  height: 100% !important;
 }
 
 a, button, .btn {
