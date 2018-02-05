@@ -5,17 +5,13 @@
     <title>Media Management</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all"
+          rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all"
+          rel="stylesheet" type="text/css"/>
     <link href="/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
     <link href="/css/style.css" media="all" rel="stylesheet" type="text/css"/>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="/js/plugins/sortable.js" type="text/javascript"></script>
-    <script src="/js/fileinput.js" type="text/javascript"></script>
-    <script src="/themes/fa/theme.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="container kv-main">
@@ -27,11 +23,17 @@
             <input id="kv-explorer" type="file" multiple accept="image/*, video/*">
         </div>
         <br>
-        <button type="button" onclick="location.href='/uploads'" class="btn btn-primary">Done</button>
+        <button type="button" onclick="location.href='/uploads'" class="btn btn-primary">Back</button>
         <button type="reset" class="btn btn-default">Reset</button>
     </form>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/js/plugins/sortable.js" type="text/javascript"></script>
+<script src="/js/fileinput.js" type="text/javascript"></script>
+<script src="/themes/fa/theme.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
         const footerTemplate = '<div class="file-thumbnail-footer" style ="height:94px">\n' +
@@ -55,9 +57,9 @@
                 '{TAG_CSS_NEW}': '',      // new thumbnail input
                 '{TAG_CSS_INIT}': 'kv-hidden'  // hide the initial input
             },
-            uploadExtraData: function() {  // callback example
+            uploadExtraData: function () {  // callback example
                 var out = {}, key, i = 0;
-                $('.kv-input:visible').each(function() {
+                $('.kv-input:visible').each(function () {
                     $el = $(this);
                     key = $el.hasClass('kv-new') ? 'new_' + i : 'init_' + i;
                     out[key] = $el.val();
