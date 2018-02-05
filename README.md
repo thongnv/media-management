@@ -1,12 +1,15 @@
 # Media Management Example
-This web app is to upload images and videos
+This web app is to upload images/videos and list uploaded files on a table
 
 Technology stack:
-- Bootstrap fileinput
+
 - Node.JS
 - Express.JS
 - PostgreSQL
 - Sequelize ORM
+- Bootstrap
+- Bootstrap file-input
+- DynaTable
 
 # Installation guide
 
@@ -36,3 +39,11 @@ Add your DB configurations on `server/config/config.json`
 `sequelize init sequelize model:create --name Media --attributes title:string`
 
 `sequelize db:migrate`
+
+Run your web application:
+
+`npm start`
+
+Open your favorite browser and go to `http://localhost:3000/`
+
+Enjoy!
