@@ -32,42 +32,29 @@
     </table>
     <hr>
     <script type="text/javascript">
-        const records = <%- JSON.stringify(records) %>
-        const queryRecordCount = <%- JSON.stringify(queryRecordCount) %>
-        const totalRecordCount = <%- JSON.stringify(totalRecordCount) %>
+        $(function () {
+            var table = $('#my-table');
 
-        const table = $('#my-table');
-        const dynatable = table
-            .bind('dynatable:init', function (e, dynatable) {
-                dynatable.sorts.add('id', 1);
-            })
-            .bind('dynatable:afterUpdate', updateTable)
-            .dynatable({
+            function updateTable() {
+                table.find('td a').click(function () {
+                    if (this.firstChild.className === "fa fa-trash-o") {
+                        var dataId = $(this).data('id');
+                        deleteFile(dataId);
+                    }
+                })
+            }
+
+            table.dynatable({
                 dataset: {
-                    records: records,
-                    queryRecordCount: queryRecordCount,
-                    totalRecordCount: totalRecordCount,
+                    ajax: true,
+                    ajaxUrl: '/uploads/files',
+                    ajaxOnLoad: true,
+                    records: []
                 }
-            })
-            .data('dynatable');
-
-        function updateTable() {
-            table.find('td a').click(function () {
-                if (this.firstChild.className === "fa fa-trash-o") {
-                    let dataId = $(this).data('id');
-                    deleteFile(dataId);
-                }
-            })
-        }
-
-        function setToItems(argument) {
-            console.log('updating');
-            dynatable.settings.dataset.originalRecords = argument;
-            dynatable.process();
-        }
-
+            }).bind('dynatable:afterUpdate', updateTable);
+        })
         function deleteFile(dataId) {
-            let confirmation = confirm('Are You Sure?');
+            var confirmation = confirm('Are You Sure?');
             if (confirmation) {
                 $.ajax({
                     type: 'DELETE',
