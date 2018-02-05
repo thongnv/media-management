@@ -32,8 +32,9 @@
     </table>
     <hr>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             var table = $('#my-table');
+
             function updateTable() {
                 table.find('td a').click(function () {
                     if (this.firstChild.className === "fa fa-trash-o") {
@@ -42,6 +43,7 @@
                     }
                 })
             }
+
             table.dynatable({
                 dataset: {
                     ajax: true,
@@ -56,7 +58,7 @@
             if (confirmation) {
                 $.ajax({
                     type: 'DELETE',
-                    url: '/uploads/'+dataId
+                    url: '/uploads/' + dataId
                 }).done(function () {
                     alert('deleted')
                 })
