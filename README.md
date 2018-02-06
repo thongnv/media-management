@@ -2,7 +2,7 @@
 This web app is to upload images/videos and list uploaded files on a table
 
 Technology stack:
-
+[I'm an inline-style link](https://www.google.com)
 - Node.JS
 - Express.JS
 - PostgreSQL
