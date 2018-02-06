@@ -2,14 +2,13 @@
 This web app is to upload images/videos and list uploaded files on a table
 
 Technology stack:
-[I'm an inline-style link](https://www.google.com)
-- Node.JS
-- Express.JS
+- [Node.JS](nodejs.org)
+- [Express.JS](https://expressjs.com/)
 - PostgreSQL
-- Sequelize ORM
+- [Sequelize ORM](http://docs.sequelizejs.com/)
 - Bootstrap
-- Bootstrap file-input
-- DynaTable
+- [Bootstrap file-input](http://plugins.krajee.com/file-input)
+- [DynaTable](https://www.dynatable.com/)
 
 # Installation guide
 
