@@ -12,12 +12,12 @@ Technology stack:
 
 # Installation guide
 
-**PostgreSQL**
+### PostgreSQL
 
 Add your DB configurations on `server/config/config.json`
 
 
-**Add path**
+##### Add path
 
 - Windows
 
@@ -27,11 +27,11 @@ Add your DB configurations on `server/config/config.json`
 
 `export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"`
 
-- Install Sequelize CLI
+##### Install Sequelize CLI
 
 `npm install -g sequelize-cli`
 
-- Create database and run migrations
+##### Create database and run migrations
 
 `createdb -U postgres -p 5432 -h localhost media_dev`
 
@@ -39,10 +39,12 @@ Add your DB configurations on `server/config/config.json`
 
 `sequelize db:migrate`
 
-Run your web application:
+##### Run your web application:
 
 `npm start`
 
 Open your favorite browser and go to `http://localhost:3000/`
+
+That's all.
 
 Enjoy!
