@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var multipart = require('connect-multiparty');
 
 var index = require('./server/routes/index');
-var uploads = require('./server/routes/uploads');
+var uploads = require('./server/routes/files');
 
 var app = express();
 
@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(multipart({ uploadDir: path.join(__dirname, 'public', 'uploads')}));
 
 app.use('/', index);
-app.use('/uploads', uploads);
+app.use('/files', uploads);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

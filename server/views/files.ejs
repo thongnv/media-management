@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Media Management</title>
+    <link href="https://s3.amazonaws.com/dynatable-docs-assets/css/bootstrap-2.3.2.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all"
+          rel="stylesheet" type="text/css"/>
+    <link href="/css/dynatable.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+            type="text/javascript"></script>
+    <script src="/js/plugins/dynatable.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Media Listing <a href="/upload" title="Add media"><i class="fa fa-plus" aria-hidden="true"></i></a></h2>
+    <hr>
+    <table id="my-table" class="table table-bordered table-striped table-hover">
+        <thead>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>DATE</th>
+        <th>DOWNLOAD</th>
+        <th>DELETE</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <hr>
+    <script type="text/javascript">
+        $(function () {
+            var table = $('#my-table');
+
+            function updateTable() {
+                table.find('td a').click(function () {
+                    if (this.firstChild.className === "fa fa-trash-o") {
+                        var dataId = $(this).data('id');
+                        deleteFile(dataId);
+                    }
+                })
+            }
+
+            table.dynatable({
+                dataset: {
+                    ajax: true,
+                    ajaxUrl: '/files',
+                    ajaxOnLoad: true,
+                    records: []
+                }
+            }).bind('dynatable:afterUpdate', updateTable);
+        })
+        function deleteFile(dataId) {
+            var confirmation = confirm('Are You Sure?');
+            if (confirmation) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/uploads/' + dataId
+                }).done(function () {
+                    alert('deleted')
+                })
+            }
+        }
+    </script>
+</div>
+</body>
+</html>

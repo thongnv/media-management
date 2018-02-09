@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-const mediaController = require('../controllers').medias;
-
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index', {title: 'Express'});
+    res.render('files', {title: 'Media Management'});
 });
 
-/* POST submit files. */
-router.post('/new', mediaController.create);
+/* GET uploaded files page. */
+router.get('/upload', function (req, res, next) {
+    res.render('upload', {title: 'Upload new media files'});
+});
 
 module.exports = router;
